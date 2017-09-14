@@ -1,3 +1,5 @@
+ $(function()
+ {
  
  
  
@@ -238,7 +240,7 @@ function inName(name)
 }
 
 Controller.init();
-
+});
 		
 
 

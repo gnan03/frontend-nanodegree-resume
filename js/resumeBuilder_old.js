@@ -1,11 +1,8 @@
- 
- 
- 
- var Model={
- 	 bio:{
- 			name: "Jane Doe",
-    		role: "Baker",
-    		contacts: {
+ $("#header").append();
+ var bio={
+ 	name: "Jane Doe",
+    role: "Baker",
+    contacts: {
 		mobile: "650-000-000",
 		email:"jane@gmail.com",
 		twitter: "@jane",
@@ -15,122 +12,9 @@
 	biopic:"images/fry.jpg",
 	welcomeMessage: "Welcome to my page!",
 	skills: ["Buttercream","Fondant","Buttercream Transfer"]
-},
-
-projects : {
-projects:
-[
-	{
-		title:"Birthday Cakes",
-		dates:"2010",
-		description:"Dopodichè, se vi rimangono alcuni passi poco chiari, posso spiegarveli: fatemi segno.",
-		images:["images/IMG_0553.jpg","images/IMG_0553.jpg"]
-	},
-	{
-		title:"Wedding Cakes",
-		dates:"2011",
-		description:"Ma come avrete notato non lo era la pagina dalla quale provenite",
-		images:["images/IMG_0553.jpg","images/IMG_0553.jpg"]
-	},
-	{
-	    title:"Townhall Events",
-		dates:"2012",
-		description:"Se avesse bisogno di aiuto in italiano, posso aiutarvi in una certa misura",
-		images:["images/IMG_0553.jpg","images/IMG_0553.jpg"]
-	}
-]
-},
-work:{
-jobs: [
+};
+bio.display=function()
 {
-	title:"Baker",
-	employer:"Kroger",
-	dates:"2009-2012",
-	location:"Columbus, OH",
-	description:"Viste le mie difficoltà con la lingua italiana,le pagine tradotte non saranno molte, ma se posso, cercherò di tradurre almeno la pagina principale , le grandi pagine di orientamento, i principali indici e certe pagine 	 che potrebbero essere particolarmente interessanti per gli italiani."
-
-},
-{
-	title:"Baker",
-	employer:"Safeway",
-	dates:"2005-2007",
-	location:"Phoenix, AZ",
-	description:"Viste le mie difficoltà con la lingua italiana, le pagine tradotte non saranno molte, ma se posso, cercherò di tradurre almeno la pagina principale , le grandi pagine di orientamento, i principali indici e certe pagine che potrebbero essere particolarmente interessanti per gli italiani."
-}
-]
-},
-education:{
-schools:[
-{
-	name:"The Art Institute of California",
-    location:"San Franciso, CA",
-    dates:"2007-2009",
-    degree:"Masters",
-    majors:["Baking","major2"]
-   
-},
-{
-	name:"University of Texas",
-    location:"Dallas, TX",
-    dates:"2001-2005",
-    degree:"Bachelors",
-    majors:["Baking","major2"]
-    
-}
-],
-onlineCourses:[
-{
-	title: "Nutrition",
-	school:"Vanderbilt University",
-	dates:"Oct 2012-Feb 2013",
-	url:"www.coursera.edu"
-},
-{
-	title: "Behavioral Economics",
-	school:"Duke University",
-	dates:"Jan 2014-May 2014",
-	url:"www.coursera.edu"
-}
-]
-}
-
-}
-var Controller={
-	init:function()
-	{
-		
-		View.init();
-	},
-	getBio:function()
-	{
-		console.log(Model.bio.name);
-		return Model.bio;
-	},
-	getProjects:function()
-	{
-		return Model.projects;
-	},
-	getWork:function()
-	{
-		return Model.work;
-	},
-	getEducation:function()
-	{
-		return Model.education;
-	}
-}
-var View={
-	init:function(){
-	$("#header").append();
-	var bio;
- 	var projects;
- 	var work;
- 	var education;
-	bio=Controller.getBio();
-	console.log(bio.name);
-	projects=Controller.getProjects();
-	work=Controller.getWork();
-	education=Controller.getEducation();
 	var formattedName = HTMLheaderName.replace("%data%",bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 	var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
@@ -165,6 +49,34 @@ var View={
 			$("#skills").append(formattedSkills);
 		}
 	}
+};
+bio.display();
+
+var projects = {
+projects:
+[
+	{
+		title:"Birthday Cakes",
+		dates:"2010",
+		description:"Dopodichè, se vi rimangono alcuni passi poco chiari, posso spiegarveli: fatemi segno.",
+		images:["images/IMG_0553.jpg","images/IMG_0553.jpg"]
+	},
+	{
+		title:"Wedding Cakes",
+		dates:"2011",
+		description:"Ma come avrete notato non lo era la pagina dalla quale provenite",
+		images:["images/IMG_0553.jpg","images/IMG_0553.jpg"]
+	},
+	{
+	    title:"Townhall Events",
+		dates:"2012",
+		description:"Se avesse bisogno di aiuto in italiano, posso aiutarvi in una certa misura",
+		images:["images/IMG_0553.jpg","images/IMG_0553.jpg"]
+	}
+]
+};
+projects.display=function()
+{
 	for(var i=0;i<projects.projects.length;i++)
 	{
 		$("#projects").append(HTMLprojectStart);
@@ -180,6 +92,30 @@ var View={
 			$(".project-entry:last").append(projectImg);
 		}
 	}
+};
+projects.display();
+
+var work={
+jobs: [
+{
+	title:"Baker",
+	employer:"Kroger",
+	dates:"2009-2012",
+	location:"Columbus, OH",
+	description:"Viste le mie difficoltà con la lingua italiana,le pagine tradotte non saranno molte, ma se posso, cercherò di tradurre almeno la pagina principale , le grandi pagine di orientamento, i principali indici e certe pagine 	 che potrebbero essere particolarmente interessanti per gli italiani."
+
+},
+{
+	title:"Baker",
+	employer:"Safeway",
+	dates:"2005-2007",
+	location:"Phoenix, AZ",
+	description:"Viste le mie difficoltà con la lingua italiana, le pagine tradotte non saranno molte, ma se posso, cercherò di tradurre almeno la pagina principale , le grandi pagine di orientamento, i principali indici e certe pagine che potrebbero essere particolarmente interessanti per gli italiani."
+}
+]
+};
+work.display=function()
+{
 	for(var i=0;i<work.jobs.length;i++)
 	{
 		$("#workExperience").append(HTMLworkStart);
@@ -194,6 +130,45 @@ var View={
 		$(".work-entry:last").append(workDescription);
 		$(".work-entry:last").append(workLocation);
 	}
+};
+work.display();
+
+var education={
+schools:[
+{
+	name:"The Art Institute of California",
+    location:"San Franciso, CA",
+    dates:"2007-2009",
+    degree:"Masters",
+    majors:["Baking","major2"]
+   
+},
+{
+	name:"University of Texas",
+    location:"Dallas, TX",
+    dates:"2001-2005",
+    degree:"Bachelors",
+    majors:["Baking","major2"]
+    
+}
+],
+onlineCourses:[
+{
+	title: "Nutrition",
+	school:"Vanderbilt University",
+	dates:"Oct 2012-Feb 2013",
+	url:"www.coursera.edu"
+},
+{
+	title: "Behavioral Economics",
+	school:"Duke University",
+	dates:"Jan 2014-May 2014",
+	url:"www.coursera.edu"
+}
+]
+};
+education.display=function()
+{
 	var schoolMajor;
 	for(var i=0;i<education.schools.length;i++)
 	{
@@ -225,11 +200,9 @@ var View={
 	    $(".education-entry:last").append(courseDates);
 		$(".education-entry:last").append(courseURL);
 	}
-	$("#main").append(internationalizeButton);
-    $("#mapDiv").append(googleMap);
-}
-}
-
+};
+education.display();
+	
 function inName(name)
 {
 	var myArray=name.split(" ");
@@ -237,7 +210,8 @@ function inName(name)
 	return (finalName);
 }
 
-Controller.init();
+$("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap);
 
 		
 
